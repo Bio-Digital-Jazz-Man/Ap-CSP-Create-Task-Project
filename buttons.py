@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import *
 import tkinter.font as tkFont
-
-
+from ButtonFunctions import *
 
 
 
@@ -15,6 +14,7 @@ button0 = None
 button_period = None
 button_enter= None
 button_addition = None
+button_expressions = None
 
 button1 = None
 button2 = None
@@ -33,6 +33,7 @@ button9 = None
 button_division = None
 
 
+
 # this sets the frame to everything in the file for the buttons
 def init(main_frame):
     global root
@@ -46,6 +47,7 @@ def all_buttons():
     global button_period
     global button_enter
     global button_addition
+    global button_expressions
 
     global button1
     global button2
@@ -62,11 +64,11 @@ def all_buttons():
     global button8
     global button9
     global button_division
+    
 
     global Themes
     global opt
     global lbl
-    global self
 
     def show():  
         lbl.config(text=opt.get())  
@@ -85,6 +87,7 @@ def all_buttons():
     button_period = tk.Button(root, text=".", background=button_color, command=lambda: print("Pressed ."))
     button_enter = tk.Button(root, text="↵", background=button_color, command=lambda: print("Pressed enter"))
     button_addition = tk.Button(root, text="+", background=button_color, command=lambda: print("Pressed +"))
+    button_expressions = tk.Button(root, text="Expressions", background=button_color, command=lambda: print("Pressed Expression"))
 
     button1 = tk.Button(root, text="1", background=button_color, command=lambda: print("Pressed 1"))
     button2 = tk.Button(root, text="2", background=button_color, command=lambda: print("Pressed 2"))
@@ -101,6 +104,7 @@ def all_buttons():
     button8 = tk.Button(root, text="8", background=button_color, command=lambda: print("Pressed 8"))
     button9 = tk.Button(root, text="9", background=button_color, command=lambda: print("Pressed 9"))
     button_division = tk.Button(root, text="÷", background=button_color, command=lambda: print("Pressed ÷"))
+    
 
     
 
@@ -111,12 +115,14 @@ def place_buttons():
     button_period.grid(row=5, column=2, sticky="nsew", columnspan=2)
     button_enter.grid(row=5, column=4, sticky="nsew", columnspan=2)
     button_addition.grid(row=5, column=6, sticky="nsew", columnspan=2)
+    button_expressions.grid(row=5, column=8, sticky="nsew", columnspan=2)
+
 
     button1.grid(row=4, column=0, sticky="nsew", columnspan=2)
     button2.grid(row=4, column=2, sticky="nsew", columnspan=2)
     button3.grid(row=4, column=4, sticky="nsew", columnspan=2)
     button_subtraction.grid(row=4, column=6, sticky="nsew", columnspan=2)
-    lbl.grid(row=4, column=8, sticky="nsew", columnspan=2)
+    lbl.grid(row=4, column=8, sticky="nsew", columnspan=2, )
 
     button4.grid(row=3, column=0, sticky="nsew", columnspan=2)
     button5.grid(row=3, column=2, sticky="nsew", columnspan=2)
@@ -129,8 +135,9 @@ def place_buttons():
     button8.grid(row=2, column=2, sticky="nsew", columnspan=2)
     button9.grid(row=2, column=4, sticky="nsew", columnspan=2)
     button_division.grid(row=2, column=6, sticky="nsew", columnspan=2)
+   
 
-    # Makes it aligned to the grid and changes the color of the dropdown
+    # Makes it aligned to the grid and changes the color of the dropdown (AI helped with this)
     dropdown = OptionMenu(root, opt, *Themes)
     dropdown.grid(row=2, column=8, sticky="nsew", columnspan=2)  # Dropdown menu 
     dropdown.config(bg="lightgray")  

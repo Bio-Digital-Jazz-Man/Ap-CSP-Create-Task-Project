@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import *
-import buttons 
+import Buttons
+from Buttons import *
+from ButtonFunctions import init_frame_switching, switch_to_extra, switch_to_main, create_extra_buttons
 import json 
 import sys
 
@@ -17,15 +19,19 @@ root.geometry("600x400") # Set window size (width x height)
 
 # adds a frame for the buttons
 frame1 = tk.Frame(root, background='white')
-frame1.pack(side="top", expand=True, fill=BOTH)
+frame1.pack(side="top", expand=True, fill="both")
+frame2 = tk.Frame(root, background='white')
 
 
-# Configure frame2's grid to expand evenly
+# Configure frame1's grid to expand evenly
 for r in range(6):      # however many rows 
     frame1.rowconfigure(r, weight=1)
+    frame2.rowconfigure(r, weight=1)
 
 for c in range(10):      # however many columns
     frame1.columnconfigure(c, weight=1)
+    frame2.columnconfigure(c, weight=1)
+
 
 
 """
@@ -35,13 +41,20 @@ label.pack(pady=20) # Center the label with padding
 """
 
 # Shows where to puts the buttons
-buttons.init(frame1)
+Buttons.init(frame1)
 
 # Adds all of the buttons and their places
-buttons.all_buttons()
+Buttons.all_buttons()
 
 # Packs all of the buttons for use 
-buttons.place_buttons()
+Buttons.place_buttons()
+
+# Initialize extra screen (from AI)
+init_frame_switching(frame1, frame2)
+create_extra_buttons()
+
+# Connect the expressions button to open extra screen (from AI)
+Buttons.button_expressions.config(command=switch_to_extra)
 
 # Run the application
 root.mainloop()
