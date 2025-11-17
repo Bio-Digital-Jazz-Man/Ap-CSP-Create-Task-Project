@@ -3,8 +3,6 @@ from tkinter import *
 import tkinter.font as tkFont
 from ButtonFunctions import *
 
-# TEST COMMIT CHANGE
-
 # variables defined so they can be global
 button_color = "lightgray"
 
@@ -31,7 +29,6 @@ button7 = None
 button8 = None
 button9 = None
 button_division = None
-
 
 
 # this sets the frame to everything in the file for the buttons
