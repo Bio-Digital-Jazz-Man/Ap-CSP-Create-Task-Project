@@ -4,6 +4,7 @@ import buttons
 import json 
 import sys
 
+
 with open("themes.json", "r", encoding="utf-8") as f:
     data = json.load(f)
     print(data)
@@ -23,7 +24,7 @@ frame1.pack(side="top", expand=True, fill=BOTH)
 for r in range(6):      # however many rows 
     frame1.rowconfigure(r, weight=1)
 
-for c in range(8):      # however many columns
+for c in range(10):      # however many columns
     frame1.columnconfigure(c, weight=1)
 
 
