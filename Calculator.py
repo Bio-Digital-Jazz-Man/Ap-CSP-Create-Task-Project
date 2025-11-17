@@ -1,7 +1,12 @@
 import tkinter as tk
 from tkinter import *
 import buttons 
+import json 
+import sys
 
+with open("themes.json", "r", encoding="utf-8") as f:
+    data = json.load(f)
+    print(data)
 
 
 # Creates the main application window
@@ -10,7 +15,7 @@ root.title("Calculator")
 root.geometry("600x400") # Set window size (width x height)
 
 # adds a frame for the buttons
-frame1 = tk.Frame(root, background='lightblue')
+frame1 = tk.Frame(root, background='white')
 frame1.pack(side="top", expand=True, fill=BOTH)
 
 

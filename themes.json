@@ -1,0 +1,25 @@
+{
+    "default": {
+        "button-background": "#ffffff",
+        "button-forground": "#000000",
+        "frame-background": "#ffffff",
+        "button-text-size": 24, 
+        "display-text-size": 36, 
+        "display-text-font": "Helvetica",
+        "display-text-color": "#000000",
+        "display-background": "#ffffff"
+
+    },
+
+    "light-blue": {
+        "button-background": "#77A1AF",
+        "button-forground": "#000000",
+        "frame-background": "#add8e6'",
+        "button-text-size": 24, 
+        "display-text-size": 36, 
+        "display-text-font": "Helvetica",
+        "display-text-color": "#000000",
+        "display-background": "#77A1AF"
+    }
+}
+

@@ -1,8 +1,10 @@
 import tkinter as tk
+from tkinter import *
+import tkinter.font as tkFont
+
 
 # variables defined so they can be global
-button_color = "#77A1AF"
-
+button_color = "lightgray"
 
 root = None
 
@@ -33,6 +35,7 @@ def init(main_frame):
 
 
 def all_buttons():
+
     # makes the buttons global so I can use them in place
     global button0
     global button_period
@@ -56,7 +59,7 @@ def all_buttons():
 
 
     # makes the buttons and adds text, and a print saying that the person had pressed the button
-    button0 = tk.Button(root, text="0", background=button_color, command=lambda: print("Pressed 0"), )
+    button0 = tk.Button(root, text="0", background=button_color, command=lambda: print("Pressed 0"))
     button_period = tk.Button(root, text=".", background=button_color, command=lambda: print("Pressed ."))
     button_enter = tk.Button(root, text="↵", background=button_color, command=lambda: print("Pressed enter"))
     button_addition = tk.Button(root, text="+", background=button_color, command=lambda: print("Pressed +"))
