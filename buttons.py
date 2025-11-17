@@ -72,11 +72,12 @@ def all_buttons():
         lbl.config(text=opt.get())  
 
     # Dropdown options  
-    Themes = ["Default", "Light, Blue"]  
+    Themes = ["Default", "Light Blue"]  
 
     opt = StringVar(value="Default")
 
-    lbl = Label(root, text=" ")  
+    lbl = Label(root, text="Default", bg="lightgray")  
+    
     
 
     # makes the buttons and adds text, and a print saying that the person had pressed the button

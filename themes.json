@@ -1,25 +1,41 @@
 {
     "default": {
-        "button-background": "#ffffff",
+        "button-background": "#d3d3d3",
         "button-forground": "#000000",
         "frame-background": "#ffffff",
+        "button-text-font": "Helvetica",
         "button-text-size": 24, 
+        "button-text-color": "#000000",
         "display-text-size": 36, 
         "display-text-font": "Helvetica",
         "display-text-color": "#000000",
-        "display-background": "#ffffff"
+        "display-background": "#ffffff",
+        "dropdown-background": "#d3d3d3",
+        "dropdown-forground": "#000000",
+        "dropdown-text-size": 24,
+        "dropdown-text-font": "Helvetica",
+        "dropdown-text-color": "#000000"
+
 
     },
 
     "light-blue": {
         "button-background": "#77A1AF",
         "button-forground": "#000000",
-        "frame-background": "#add8e6'",
+        "frame-background": "#add8e6",
+        "button-text-font": "Helvetica",
+        "button-text-color": "#000000",
         "button-text-size": 24, 
         "display-text-size": 36, 
         "display-text-font": "Helvetica",
         "display-text-color": "#000000",
-        "display-background": "#77A1AF"
+        "display-background": "#add8e6",
+        "dropdown-background": "#77A1AF",
+        "dropdown-forground": "#000000",
+        "dropdown-text-size": 24,
+        "dropdown-text-font": "Helvetica",
+        "dropdown-text-color": "#000000"
+        
     }
 }
 
