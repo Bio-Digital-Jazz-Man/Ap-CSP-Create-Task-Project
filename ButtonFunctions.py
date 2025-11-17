@@ -1,39 +1,58 @@
-# This entire file was made from AI
+"""Screen management helpers for the calculator app."""
+from __future__ import annotations
+
 import tkinter as tk
-main_frame: tk.Frame = None
-extra_frame: tk.Frame = None
+from typing import Dict, List
 
-# We'll keep references to the main and secondary frames
-main_frame = None
-extra_frame = None
 
-def init_frame_switching(main, extra):
-    """Initialize the main and extra frames"""
-    global main_frame, extra_frame
-    main_frame = main
-    extra_frame = extra
+class ScreenManager:
+    """Handles navigation between the keypad and expressions history screens."""
 
-def switch_to_extra():
-    """Hide main frame and show extra frame"""
-    if main_frame and extra_frame:
-        main_frame.pack_forget()
-        extra_frame.pack(fill="both", expand=True)
+    def __init__(self, root: tk.Tk) -> None:
+        self.root = root
+        self.main_frame = tk.Frame(root)
+        self.extra_frame = tk.Frame(root)
+        self._history: List[str] = []
+        self._history_listbox = None
+        self._build_extra_frame()
 
-def switch_to_main():
-    """Hide extra frame and show main frame"""
-    if main_frame and extra_frame:
-        extra_frame.pack_forget()
-        main_frame.pack(fill="both", expand=True)
+    def show_main(self) -> None:
+        self.extra_frame.pack_forget()
+        self.main_frame.pack(fill="both", expand=True)
 
-def create_extra_buttons():
-    """Create buttons in the extra frame that return to main"""
-    if extra_frame:
-        # Example extra buttons
-        btn1 = tk.Button(extra_frame, text="Back to Main", command=switch_to_main)
-        btn2 = tk.Button(extra_frame, text="Extra Button 1", command=switch_to_main)
-        btn3 = tk.Button(extra_frame, text="Extra Button 2", command=switch_to_main)
-        
-        # Pack them
-        btn1.pack(pady=20)
-        btn2.pack(pady=20)
-        btn3.pack(pady=20)
+    def show_extra(self) -> None:
+        self.main_frame.pack_forget()
+        self.extra_frame.pack(fill="both", expand=True)
+
+    def add_history_entry(self, entry: str) -> None:
+        self._history.insert(0, entry)
+        if self._history_listbox is not None:
+            self._history_listbox.delete(0, tk.END)
+            for item in self._history:
+                self._history_listbox.insert(tk.END, item)
+
+    def apply_theme(self, theme: Dict[str, str]) -> None:
+        bg = theme.get("frame-background", "#ffffff")
+        fg = theme.get("display-text-color", "#000000")
+        font = (
+            theme.get("display-text-font", "Helvetica"),
+            theme.get("display-text-size", 16),
+        )
+        self.main_frame.configure(bg=bg)
+        self.extra_frame.configure(bg=bg)
+        if self._history_listbox is not None:
+            self._history_listbox.configure(bg=theme.get("display-background", bg), fg=fg, font=font)
+        if hasattr(self, "_extra_label"):
+            self._extra_label.configure(bg=bg, fg=fg, font=font)
+        if hasattr(self, "_back_button"):
+            self._back_button.configure(font=font)
+
+    def _build_extra_frame(self) -> None:
+        self._extra_label = tk.Label(self.extra_frame, text="Saved expressions")
+        self._extra_label.pack(pady=12)
+
+        self._history_listbox = tk.Listbox(self.extra_frame, width=40, height=10)
+        self._history_listbox.pack(fill="both", expand=True, padx=20, pady=10)
+
+        self._back_button = tk.Button(self.extra_frame, text="Back to calculator", command=self.show_main)
+        self._back_button.pack(pady=12)
